@@ -7,8 +7,17 @@ with 'App::Services::Role::Logger';
 use File::HomeDir;
 use Config::Properties::Simple;
 
-has properties => ( is => 'rw', );
-has openmake_server => ( is=>'rw');
+has properties => (
+	is => 'rw',
+	isa => 'Config::Properties::Simple'
+	
+ );
+
+has openmake_server => (
+	is=>'rw',
+	isa => 'Str',
+	
+);
 
 sub BUILD {
 	my $s = shift;
@@ -35,6 +44,7 @@ sub get_omenv_properties {
 	}
 	
 	my $file;
+	
 	map { $file = $_ if -f $_ } @files;
 	
 	return undef unless $file;
