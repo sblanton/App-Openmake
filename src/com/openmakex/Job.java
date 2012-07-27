@@ -1,4 +1,4 @@
-package com.seanblanton.openmake;
+package com.openmakex;
 
 import java.util.Date;
 
