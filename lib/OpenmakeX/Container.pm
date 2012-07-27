@@ -9,13 +9,11 @@ sub BUILD {
 	$_[0]->build_container;
 }
 
-has log_conf => (
-	is => 'rw',
-);
+has log_conf => ( is => 'rw', );
 
 has job_name => (
-	is =>'rw',
-	isa => 'Str',
+	is       => 'rw',
+	isa      => 'Str',
 	required => 1
 );
 
@@ -36,23 +34,33 @@ sub build_container {
 
 		);
 
-		service 'openmake_env_svc' => (
+		service 'om_env_svc' => (
 			class        => 'OpenmakeX::Env',
 			dependencies => {
 				logger_svc => depends_on('logger_svc'),
-				
-			}
+
+			  }
 
 		);
 
-		service 'openmake_job_svc' => (
+		service 'om_util_svc' => (
+			class        => 'OpenmakeX::Util',
+			dependencies => {
+				logger_svc => depends_on('logger_svc'),
+
+			  }
+
+		);
+
+		service 'om_job_svc' => (
 			class        => 'OpenmakeX::Job',
 			dependencies => {
 				logger_svc => depends_on('logger_svc'),
-				om_env => depends_on('openmake_env_svc'),
-				job_name => 'job_name',
-				
-			}
+				om_env     => depends_on('om_env_svc'),
+				om_util    => depends_on('om_util_svc'),
+				job_name   => 'job_name',
+
+			  }
 
 		);
 
