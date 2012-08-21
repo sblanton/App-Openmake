@@ -1,6 +1,6 @@
 package OpenmakeX::Container;
 
-use Moose;
+use Moo;
 extends 'Bread::Board::Container';
 
 use Bread::Board;
@@ -17,7 +17,10 @@ has job_name => (
 	required => 1
 );
 
-has '+name' => ( default => 'OpenmakeX' );
+has 'name' => (
+	is      => 'rw',
+	default => 'OpenmakeX'
+);
 
 sub build_container {
 	my $s = shift;
@@ -67,6 +70,6 @@ sub build_container {
 	}
 }
 
-no Moose;
+no Moo;
 
 1;

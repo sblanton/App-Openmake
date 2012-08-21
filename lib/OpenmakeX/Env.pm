@@ -1,11 +1,12 @@
 package OpenmakeX::Env;
 
-use Moose;
+use Moo;
 
 with 'App::Services::Role::Logger';
 
 use File::HomeDir;
 use Config::Properties::Simple;
+use common::sense;
 
 has properties => (
 	is => 'rw',
@@ -28,7 +29,7 @@ sub BUILD {
 }
 
 sub get_omenv_properties {
-	my $s = shift or confess;
+	my $s = shift or die;
 
 	my $omenv = 'omenvironment.properties';
 	my $home  = File::HomeDir->my_home;
@@ -57,6 +58,6 @@ sub get_omenv_properties {
 
 }
 
-no Moose;
+no Moo;
 
 1;

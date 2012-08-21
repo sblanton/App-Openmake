@@ -1,6 +1,6 @@
 package OpenmakeX::Job;
 
-use Moose;
+use Moo;
 
 with 'App::Services::Role::Logger';
 
@@ -45,6 +45,6 @@ sub exec {
 
 }
 
-no Moose;
+no Moo;
 
 1;
