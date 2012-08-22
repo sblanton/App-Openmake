@@ -2,7 +2,7 @@ package OpenmakeX::Util;
 
 use Moose;
 
-with 'App::Services::Role::Logger';
+with 'App::Services::Logger::Role';
 
 sub handle_rc {
 	my $s = shift or confess;

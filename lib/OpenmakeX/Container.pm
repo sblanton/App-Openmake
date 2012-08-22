@@ -1,6 +1,8 @@
 package OpenmakeX::Container;
 
-use Moo;
+use Moose;
+use common::sense;
+
 extends 'Bread::Board::Container';
 
 use Bread::Board;
@@ -9,7 +11,17 @@ sub BUILD {
 	$_[0]->build_container;
 }
 
-has log_conf => ( is => 'rw', );
+has log_conf => (
+	is      => 'rw',
+	default => sub {
+		qq/ 
+log4perl.rootLogger=INFO, main
+log4perl.appender.main=Log::Log4perl::Appender::Screen
+log4perl.appender.main.layout   = Log::Log4perl::Layout::SimpleLayout
+/;
+	},
+	lazy => 1,
+);
 
 has job_name => (
 	is       => 'rw',
@@ -31,7 +43,7 @@ sub build_container {
 		service 'job_name' => $s->job_name;
 
 		service 'logger_svc' => (
-			class        => 'App::Services::Service::Logger',
+			class        => 'App::Services::Logger::Service',
 			lifecycle    => 'Singleton',
 			dependencies => { log_conf => 'log_conf' }
 
@@ -70,6 +82,6 @@ sub build_container {
 	}
 }
 
-no Moo;
+no Moose;
 
 1;

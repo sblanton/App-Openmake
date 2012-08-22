@@ -1,10 +1,10 @@
 package OpenmakeX;
 
-use Moo;
+use Moose;
 use common::sense;
 
 
 
-no Moo;
+no Moose;
 
 1;

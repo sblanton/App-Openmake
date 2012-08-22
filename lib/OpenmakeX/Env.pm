@@ -1,8 +1,8 @@
 package OpenmakeX::Env;
 
-use Moo;
+use Moose;
 
-with 'App::Services::Role::Logger';
+with 'App::Services::Logger::Role';
 
 use File::HomeDir;
 use Config::Properties::Simple;
@@ -58,6 +58,6 @@ sub get_omenv_properties {
 
 }
 
-no Moo;
+no Moose;
 
 1;

@@ -1,8 +1,9 @@
 package OpenmakeX::Job;
 
-use Moo;
+use Moose;
+use common::sense;
 
-with 'App::Services::Role::Logger';
+with 'App::Services::Logger::Role';
 
 has job_name => (
 	is  => 'rw',
@@ -45,6 +46,6 @@ sub exec {
 
 }
 
-no Moo;
+no Moose;
 
 1;
