@@ -1,4 +1,4 @@
-package OpenmakeX::Job;
+package App::Openmake::Job;
 
 use Moose;
 use common::sense;

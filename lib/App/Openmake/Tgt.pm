@@ -1,4 +1,4 @@
-package OpenmakeX;
+package App::Openmake::Tgt;
 
 use Moose;
 use common::sense;

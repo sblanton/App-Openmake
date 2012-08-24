@@ -1,4 +1,4 @@
-package OpenmakeX::Util;
+package App::Openmake::Util;
 
 use Moose;
 

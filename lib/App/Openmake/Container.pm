@@ -1,4 +1,4 @@
-package OpenmakeX::Container;
+package App::Openmake::Container;
 
 use Moose;
 use common::sense;
